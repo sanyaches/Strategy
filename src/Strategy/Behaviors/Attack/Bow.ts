@@ -5,7 +5,7 @@ export class Bow implements AttackBehavior{
     damage: number = 50;
     range: number = 5;
 
-    attack(): void {
+    attack(targetUnit: Unit): void {
         console.log('shot an arrow to target' + this.damage + 'HP')
     }
 }

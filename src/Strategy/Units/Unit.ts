@@ -22,11 +22,11 @@ export class Unit {
     icon: string;
     icon_alternative: string;
 
-    Attack(){
-        this.attackBehavior.attack()
+    attack(targetUnit: Unit){
+        this.attackBehavior.attack(targetUnit)
     };
 
-    Move(){
-        this.moveBehavior.move();
+    move(targetArea: Area){
+        this.moveBehavior.move(targetArea);
     };
 }

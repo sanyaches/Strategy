@@ -13,6 +13,8 @@ export class Map {
     map: Array<Array<Area>>;
     units: Array<Unit>;
     currentUnit: Unit;
+    mayMoveCells: Array<HTMLElement> = []; //DIVS
+    mayAttackCells: Array<HTMLElement> = []; //DIVS
 
     constructor(i: number, j: number){
         this.rows = i;
@@ -172,6 +174,7 @@ export class Map {
 
     click_logic(){
         let self = this;
+
         let getDivs = function (elements: Array<HTMLElement>) {
             let divs = [] as Array<HTMLElement>;
             for (let i = 0; i < elements.length; i++)
@@ -179,12 +182,28 @@ export class Map {
 
             return divs;
         };
+
         let getUnit = function (x: number, y: number) {
             for (let i = 0; i < self.units.length; i++) {
                 if ( (self.units[i].position_x == x) && (self.units[i].position_y == y) ) {
                     return self.units[i];
                 }
             }
+        };
+
+        let getArea = function (x: number, y: number) {
+            for (let i = 0; i < self.rows; i++) {
+                for (let j = 0; j < self.cols; j++) {
+                    if ( (self.map[i][j].position_x == x) && (self.map[i][j].position_y) ) {
+                        return self.map[i][j];
+                    }
+                }
+
+            }
+        };
+
+        let upgradeMap = function (){
+
         };
 
         document.body.onclick = function(event: MouseEvent) {
@@ -198,99 +217,148 @@ export class Map {
             if ( divs.length == 2 && self.currentUnit == undefined ) {  // before if OK
 
                 /**
-                 * Обработка первого клика (флаг увеличиваем на 1)
+                 * Обработка первого клика (выбор юнита для действия)
                  * divs[0] --> Unit; divs[1] --> Area
                  */
-                document.body.setAttribute('flag', '1');
+                // document.body.setAttribute('flag', '1');
 
-                if ( document.body.getAttribute('flag') == '1' ) {
-                    alert('Start stage 1!');
-                    // document.body.setAttribute('flag', '1');
+                // if ( document.body.getAttribute('flag') == '1' ) {
+                alert('Start stage 1!');
+                // document.body.setAttribute('flag', '1');
 
-                    /** Подсветка выбранного юнита красным */
-                    divs[0].style.backgroundColor = "rgba( 255, 1, 0, 0.3)";
+                /** Подсветка выбранного юнита красным */
+                divs[0].style.backgroundColor = "rgba( 255, 1, 0, 0.3)";
 
 
-                    /** Get logic coordinates = Unit ( PositionX ; PositionY ) */
-                    let clickX = event.clientX, clickY = event.clientY;
-                    let unitPositionX = Math.floor( (clickX - 10) / 36 );
-                    let unitPositionY = Math.floor( (clickY - 10) / 36 );
+                /** Get logic coordinates = Unit ( PositionX ; PositionY ) range(20) */
+                let clickX = event.clientX, clickY = event.clientY;
+                let unitPositionX = Math.floor( (clickX - 10) / 36 );
+                let unitPositionY = Math.floor( (clickY - 10) / 36 );
 
-                    /** Запоминаем Юнита, по которому кликнули */
-                    let currentUnit: Unit;
-                    // let units: Array<Unit> = self.units;
-                    currentUnit = getUnit(unitPositionX, unitPositionY);
-                    console.log(currentUnit);
-                    self.currentUnit = currentUnit;
+                /** Запоминаем Юнита, по которому кликнули */
+                let currentUnit: Unit;
+                // let units: Array<Unit> = self.units;
+                currentUnit = getUnit(unitPositionX, unitPositionY);
+                console.log(currentUnit);
+                self.currentUnit = currentUnit;
 
-                    /** Получаем speed - скорость ходьбы и range - дальность атаки */
-                    let speed = currentUnit.moveBehavior.speed;
-                    let range = currentUnit.attackBehavior.range;
+                /** Получаем speed - скорость ходьбы и range - дальность атаки */
+                let speed = currentUnit.moveBehavior.speed;
+                let range = currentUnit.attackBehavior.range;
 
-                    /**
-                     * Найдём клетки, в которые можно ходить
-                     * speed >= r = sqrt( sqr(x1-x2) + sqr(y1-y2) )
-                     * физические координаты к логическим относятся так:
-                     * (i, j) ==> (X, Y) = (j * 36 + 10 px; i * 36 + 10)
-                     * Так же отберем клетки тех юнитов, до которых можно дотянуться
-                     * range >= r = sqrt( sqr(x1-x2) + sqr(y1-y2) )
-                     */
-                    let mayMoveCells: Array<HTMLElement> = [];
-                    let mayAttackCells: Array<HTMLElement> = [];
-                    for (let i = 0; i < self.rows; i++) {
-                        for (let j = 0; j < self.cols; j++) {
+                /**
+                 * Найдём клетки, в которые можно ходить
+                 * speed >= r = sqrt( sqr(x1-x2) + sqr(y1-y2) )
+                 * физические координаты к логическим относятся так:
+                 * (i, j) ==> (X, Y) = (j * 36 + 10 px; i * 36 + 10)
+                 * Так же отберем клетки тех юнитов, до которых можно дотянуться
+                 * range >= r = sqrt( sqr(x1-x2) + sqr(y1-y2) )
+                 */
 
-                            // Условие для ходьбы
-                            if ( speed >= Math.sqrt( Math.pow( (j - currentUnit.position_x), 2) +
-                                Math.pow( (i - currentUnit.position_y), 2 ) ) ) {
-                                /**
-                                 * Если 'div' один в координате,
-                                 * то кладём в клетки, в которые можно ходить
-                                 */
-                                let elements = document.elementsFromPoint(
-                                    j * 36 + 10, i * 36 + 10) as Array<HTMLElement>;
-                                let divs = getDivs(elements);
-                                if (divs.length == 1) mayMoveCells.push(divs[0]);
+                for (let i = 0; i < self.rows; i++) {
+                    for (let j = 0; j < self.cols; j++) {
 
+                        // Условие для ходьбы
+                        if ( speed >= Math.sqrt( Math.pow( (j - currentUnit.position_x), 2) +
+                            Math.pow( (i - currentUnit.position_y), 2 ) ) ) {
+
+                            /**
+                             * Если 'div' один в координате и Area.canMove
+                             * то кладём в клетки, в которые можно ходить
+                             */
+                            let elements = document.elementsFromPoint(
+                                j * 36 + 10, i * 36 + 10) as Array<HTMLElement>;
+                            let divs = getDivs(elements);
+
+                            if (divs.length == 1 && self.map[i][j].canMove) {
+                                self.mayMoveCells.push(divs[0]);
                             }
 
-                            // Условие для атаки
-                            if ( range >= Math.sqrt( Math.pow( (j - currentUnit.position_x), 2) +
-                                Math.pow( (i - currentUnit.position_y), 2 ) ) ) {
-                                /**
-                                 * Если div-а два в координате и 'playerId' у targetUnit и currentUnit отличаются
-                                 * то кладём в клетки, юнитов из которых можно атаковать
-                                 */
-                                let elements = document.elementsFromPoint(
-                                    j * 36 + 10, i * 36 + 10) as Array<HTMLElement>;
-                                let divs = getDivs(elements);
-                                if (divs.length == 2 && ( getUnit(j, i).playerId != currentUnit.playerId ) ) {
-                                    mayAttackCells.push(divs[1]);
-                                }
+                        }
+
+                        // Условие для атаки
+                        if ( range >= Math.sqrt( Math.pow( (j - currentUnit.position_x), 2) +
+                            Math.pow( (i - currentUnit.position_y), 2 ) ) ) {
+                            /**
+                             * Если div-а два в координате и 'playerId' у targetUnit и currentUnit отличаются
+                             * то кладём в клетки, юнитов из которых можно атаковать
+                             */
+                            let elements = document.elementsFromPoint(
+                                j * 36 + 10, i * 36 + 10) as Array<HTMLElement>;
+                            let divs = getDivs(elements);
+                            if (divs.length == 2 && ( getUnit(j, i).playerId != currentUnit.playerId ) ) {
+                                self.mayAttackCells.push(divs[1]);
                             }
                         }
                     }
-
-                    /** Подсветим mayMoveCells и mayAttackCells */
-                    for (let i = 0; i < mayMoveCells.length; i++) {
-                        mayMoveCells[i].style.backgroundImage = "url('../src/Strategy/Icons/ground_select.jpg')";
-                    }
-                    for (let i = 0; i < mayAttackCells.length; i++) {
-                        mayAttackCells[i].style.backgroundImage = "url('../src/Strategy/Icons/ground_select.jpg')";
-                    }
-
-                    /** Обработка первого клика завершена, идём ждать второго клика */
                 }
+
+                /** Подсветим mayMoveCells и mayAttackCells */
+                for (let i = 0; i < self.mayMoveCells.length; i++) {
+                    self.mayMoveCells[i].style.backgroundImage = "url('../src/Strategy/Icons/ground_select.jpg')";
+                }
+                for (let i = 0; i < self.mayAttackCells.length; i++) {
+                    self.mayAttackCells[i].style.backgroundImage = "url('../src/Strategy/Icons/ground_select.jpg')";
+                }
+
+                /** Обработка первого клика завершена, идём ждать второго клика */
+
             }
 
             // flag == 1, current Unit defined
-            if ( (document.body.getAttribute('flag') == null) && (self.currentUnit != undefined) )  {
-                    /** Начало обработки второго клика */
-                    alert('Start stage 2!');
+            if ( self.currentUnit != undefined ) {
 
-                    /** Конец обработки второго клика */
-                    document.body.setAttribute('flag', null);
-                    self.currentUnit = undefined;
+                /** Начало обработки второго клика */
+                alert('Start stage 2!');
+
+                /** Get logic coordinates = Area ( PositionX ; PositionY ) range(20) */
+                    let clickX = event.clientX, clickY = event.clientY;
+                    let areaPositionX = Math.floor( (clickX - 10) / 36 );
+                    let areaPositionY = Math.floor( (clickY - 10) / 36 );
+
+                /**
+                 * Либо div второго клика - земля, либо вражеский юнит
+                 * Если в Divs 1 элемент то это область на которую хочет перейти пользователь
+                 */
+                if (divs.length == 1 && self.mayMoveCells.includes(divs[0]) ) {
+
+                    /** Запоминаем Область, по которой кликнули */
+                    let currentArea: Area;
+                    currentArea = getArea(areaPositionX, areaPositionY);
+                    console.log(currentArea);
+
+                    /** Собственно идём в Area */
+                    self.currentUnit.move(currentArea);
+                    upgradeMap();
+                }
+
+                /** Если второго клик по вражескому юниту */
+                if ( divs.length == 2 && self.mayAttackCells.includes(divs[1]) ) {
+
+                    /** Запоминаем Юнита, по которой кликнули */
+                    let targetUnit: Unit;
+                    targetUnit = getUnit(areaPositionX, areaPositionY);
+                    console.log(targetUnit);
+
+                    /** Собственно бьём по TargetUnit */
+                    self.currentUnit.attack(targetUnit);
+                    upgradeMap();
+                }
+
+                /** Конец обработки второго клика - подтираем всё дело */
+                document.body.setAttribute('flag', null);
+                self.currentUnit = undefined;
+
+                /** Подсветку уберём: поменяем bckgrnd-img и очистим mayMoveCells и mayAttackCells */
+                for (let i = 0; i < self.mayMoveCells.length; i++) {
+                    self.mayMoveCells[i].style.backgroundImage = "url('../src/Strategy/Icons/ground.png')";
+                }
+                for (let i = 0; i < self.mayAttackCells.length; i++) {
+                    self.mayAttackCells[i].style.backgroundImage = "url('../src/Strategy/Icons/ground.png')";
+                }
+                self.mayMoveCells = [];
+                self.mayAttackCells = [];
+
 
             }
 

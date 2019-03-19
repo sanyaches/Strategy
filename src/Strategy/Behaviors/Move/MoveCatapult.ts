@@ -4,7 +4,7 @@ import {Area} from "../../Map/Area";
 export class MoveCatapult implements MoveBehavior{
     speed: number = 1;
 
-    move(): void {
+    move(targetArea: Area): void {
         console.log('Can move' + this.speed + ' steps.')
     }
 }

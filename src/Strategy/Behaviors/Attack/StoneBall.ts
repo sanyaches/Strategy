@@ -5,7 +5,7 @@ export class StoneBall implements AttackBehavior{
     damage: number = 100;
     range: number = 10;
 
-    attack(): void {
+    attack(targetUnit: Unit): void {
         console.log('shot an arrow to target' + this.damage + 'HP')
     }
 }

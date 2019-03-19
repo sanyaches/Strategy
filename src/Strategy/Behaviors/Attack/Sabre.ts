@@ -5,7 +5,7 @@ export class Sabre implements AttackBehavior{
     damage: number = 75;
     range: number = 1;
 
-    attack(): void {
+    attack(targetUnit: Unit): void {
         console.log('shot an arrow to target' + this.damage+ 'HP')
     }
 }

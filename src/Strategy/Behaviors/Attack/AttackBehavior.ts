@@ -4,5 +4,5 @@ export interface AttackBehavior {
     damage: number;
     range: number;
 
-    attack(): void;
+    attack(targetUnit: Unit): void;
 }
