@@ -6,6 +6,17 @@ export class Bow implements AttackBehavior{
     range: number = 5;
 
     attack(targetUnit: Unit): void {
-        console.log('shot an arrow to target' + this.damage + 'HP')
+        targetUnit.health -= this.damage;
+        if (targetUnit.health <= 0) {
+            targetUnit.isAlive = false;
+            targetUnit.icon = '../src/Strategy/Icons/grave.png';
+            targetUnit.icon_alternative = '../src/Strategy/Icons/grave.png';
+            targetUnit.moveBehavior.speed = 0;
+            targetUnit.attackBehavior.damage = 0;
+            targetUnit.attackBehavior.range = 0;
+        }
+
+        console.log('Unit: '+ typeof(targetUnit) + ' X: ' + targetUnit.position_x +
+            ' Y: ' + targetUnit.position_y +'-' + this.damage + 'hp ');
     }
 }

@@ -26,7 +26,7 @@ export class Unit {
         this.attackBehavior.attack(targetUnit)
     };
 
-    move(targetArea: Area){
-        this.moveBehavior.move(targetArea);
+    move(unit: Unit, targetArea: Area){
+        this.moveBehavior.move(unit,targetArea);
     };
 }

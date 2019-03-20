@@ -6,6 +6,7 @@ import {Archer} from "../Units/Archer";
 import {Horseman} from "../Units/Horseman";
 import {Swordsman} from "../Units/Swordsman";
 import {Catapult} from "../Units/Catapult";
+// import {loadRules} from "tslint";
 
 export class Map {
     rows: number;
@@ -52,15 +53,15 @@ export class Map {
 
                 switch(areas[i][j]) {
                    case "Grnd": {
-                      arr.push(new GroundArea(i, j ));
+                      arr.push(new GroundArea(j, i ));
                       break;
                    }
                    case "Water": {
-                      arr.push(new WaterArea(i, j ));
+                      arr.push(new WaterArea(j, i ));
                       break;
                    }
                    default: {
-                      arr.push(new GroundArea(i, j ));
+                      arr.push(new GroundArea(j, i ));
                       break;
                    }
                 }
@@ -194,19 +195,19 @@ export class Map {
         let getArea = function (x: number, y: number) {
             for (let i = 0; i < self.rows; i++) {
                 for (let j = 0; j < self.cols; j++) {
-                    if ( (self.map[i][j].position_x == x) && (self.map[i][j].position_y) ) {
+                    if ( (self.map[i][j].position_x == x) && (self.map[i][j].position_y == y) ) {
                         return self.map[i][j];
                     }
                 }
-
             }
         };
 
-        let upgradeMap = function (){
-
-        };
+        // let upgradeMap = function (){
+        //
+        // };
 
         document.body.onclick = function(event: MouseEvent) {
+            let flag: number = 0;
 
             /** Все элементы 'div' из координат клика помещаем в 'Array<HTMLElement>' */
             let elements = document.elementsFromPoint(event.clientX, event.clientY) as Array<HTMLElement>;
@@ -220,12 +221,7 @@ export class Map {
                  * Обработка первого клика (выбор юнита для действия)
                  * divs[0] --> Unit; divs[1] --> Area
                  */
-                // document.body.setAttribute('flag', '1');
-
-                // if ( document.body.getAttribute('flag') == '1' ) {
-                alert('Start stage 1!');
-                // document.body.setAttribute('flag', '1');
-
+                flag = 1;
                 /** Подсветка выбранного юнита красным */
                 divs[0].style.backgroundColor = "rgba( 255, 1, 0, 0.3)";
 
@@ -237,7 +233,6 @@ export class Map {
 
                 /** Запоминаем Юнита, по которому кликнули */
                 let currentUnit: Unit;
-                // let units: Array<Unit> = self.units;
                 currentUnit = getUnit(unitPositionX, unitPositionY);
                 console.log(currentUnit);
                 self.currentUnit = currentUnit;
@@ -286,7 +281,8 @@ export class Map {
                             let elements = document.elementsFromPoint(
                                 j * 36 + 10, i * 36 + 10) as Array<HTMLElement>;
                             let divs = getDivs(elements);
-                            if (divs.length == 2 && ( getUnit(j, i).playerId != currentUnit.playerId ) ) {
+                            if (divs.length == 2 && ( getUnit(j, i).playerId != currentUnit.playerId ) &&
+                                                        getUnit(j, i).isAlive ) {
                                 self.mayAttackCells.push(divs[1]);
                             }
                         }
@@ -302,16 +298,16 @@ export class Map {
                 }
 
                 /** Обработка первого клика завершена, идём ждать второго клика */
-
             }
 
-            // flag == 1, current Unit defined
-            if ( self.currentUnit != undefined ) {
+            // current Unit defined
+            if ( self.currentUnit != undefined && flag == 0 ) {
 
                 /** Начало обработки второго клика */
-                alert('Start stage 2!');
+                // alert('Start stage 2!');
 
-                /** Get logic coordinates = Area ( PositionX ; PositionY ) range(20) */
+
+                    /** Get logic coordinates = Area ( PositionX ; PositionY ) range(20) */
                     let clickX = event.clientX, clickY = event.clientY;
                     let areaPositionX = Math.floor( (clickX - 10) / 36 );
                     let areaPositionY = Math.floor( (clickY - 10) / 36 );
@@ -328,8 +324,16 @@ export class Map {
                     console.log(currentArea);
 
                     /** Собственно идём в Area */
-                    self.currentUnit.move(currentArea);
-                    upgradeMap();
+                    //сначала подтереть все старые иконки - вынести в функцию - повторение кода ниже
+                    for (let i = 0; i < self.units.length; i++) {
+                        let divsUnit = getDivs(document.elementsFromPoint(
+                            self.units[i].position_x * 36 + 10,
+                            self.units[i].position_y * 36 + 10) as Array<HTMLElement> )
+                        divsUnit[0].parentNode.removeChild(divsUnit[0]);
+                    }
+                    self.currentUnit.move(self.currentUnit,currentArea);
+                    // upgradeMap();
+                    self.draw_map_unit();
                 }
 
                 /** Если второго клик по вражескому юниту */
@@ -339,14 +343,20 @@ export class Map {
                     let targetUnit: Unit;
                     targetUnit = getUnit(areaPositionX, areaPositionY);
                     console.log(targetUnit);
-
                     /** Собственно бьём по TargetUnit */
                     self.currentUnit.attack(targetUnit);
-                    upgradeMap();
+                    // upgradeMap();
+                    //сначала подтереть старую иконку
+                    for (let i = 0; i < self.units.length; i++) {
+                        let divsUnit = getDivs(document.elementsFromPoint(
+                            self.units[i].position_x * 36 + 10,
+                            self.units[i].position_y * 36 + 10) as Array<HTMLElement> )
+                        divsUnit[0].parentNode.removeChild(divsUnit[0]);
+                    }
+                    self.draw_map_unit();
                 }
 
                 /** Конец обработки второго клика - подтираем всё дело */
-                document.body.setAttribute('flag', null);
                 self.currentUnit = undefined;
 
                 /** Подсветку уберём: поменяем bckgrnd-img и очистим mayMoveCells и mayAttackCells */
@@ -358,8 +368,6 @@ export class Map {
                 }
                 self.mayMoveCells = [];
                 self.mayAttackCells = [];
-
-
             }
 
         };

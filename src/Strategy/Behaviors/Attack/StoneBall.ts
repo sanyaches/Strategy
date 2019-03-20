@@ -6,6 +6,10 @@ export class StoneBall implements AttackBehavior{
     range: number = 10;
 
     attack(targetUnit: Unit): void {
-        console.log('shot an arrow to target' + this.damage + 'HP')
+        targetUnit.health -= this.damage;
+        if (targetUnit.health <= 0) targetUnit.isAlive = false;
+
+        console.log('Unit: '+ typeof(targetUnit) + ' X: ' + targetUnit.position_x +
+            ' Y: ' + targetUnit.position_y +'-' + this.damage + 'hp ');
     }
 }
