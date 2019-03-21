@@ -176,6 +176,7 @@ export class Map {
     click_logic(){
         let self = this;
 
+        /** Из всех элементов выбирает divs */
         let getDivs = function (elements: Array<HTMLElement>) {
             let divs = [] as Array<HTMLElement>;
             for (let i = 0; i < elements.length; i++)
@@ -184,6 +185,7 @@ export class Map {
             return divs;
         };
 
+        /** По логическим координатам возвращает Unit */
         let getUnit = function (x: number, y: number) {
             for (let i = 0; i < self.units.length; i++) {
                 if ( (self.units[i].position_x == x) && (self.units[i].position_y == y) ) {
@@ -192,6 +194,7 @@ export class Map {
             }
         };
 
+        /** По логическим координатам возвращает Area */
         let getArea = function (x: number, y: number) {
             for (let i = 0; i < self.rows; i++) {
                 for (let j = 0; j < self.cols; j++) {
@@ -202,10 +205,23 @@ export class Map {
             }
         };
 
-        // let upgradeMap = function (){
-        //
-        // };
+        /** Подтирает старые дивы юнитов и рисует новые по обновленной логической карте */
+        let clearUnit = function (){
+            for (let i = 0; i < self.units.length; i++) {
+                let divsUnit = getDivs(document.elementsFromPoint(
+                    self.units[i].position_x * 36 + 10,
+                    self.units[i].position_y * 36 + 10) as Array<HTMLElement> );
+                divsUnit[0].parentNode.removeChild(divsUnit[0]);
+            }
+        };
 
+        /** Массиву ячеек меняет background-image */
+        let changeBackground = function (cells: Array<HTMLElement>, backgroundUrl: string){
+            for (let i = 0; i < cells.length; i++)
+                cells[i].style.backgroundImage = backgroundUrl;
+        };
+
+        /** Логика кликов */
         document.body.onclick = function(event: MouseEvent) {
             let flag: number = 0;
 
@@ -213,6 +229,10 @@ export class Map {
             let elements = document.elementsFromPoint(event.clientX, event.clientY) as Array<HTMLElement>;
             let divs = getDivs(elements);
 
+            /** Get coordinates Logic and Physical */
+            let physicalX = event.clientX, physicalY = event.clientY;
+            let logicX = Math.floor( (physicalX - 10) / 36 );
+            let logicY = Math.floor( (physicalY - 10) / 36 );
 
             /** Первый клик по юниту */
             if ( divs.length == 2 && self.currentUnit == undefined ) {  // before if OK
@@ -225,15 +245,9 @@ export class Map {
                 /** Подсветка выбранного юнита красным */
                 divs[0].style.backgroundColor = "rgba( 255, 1, 0, 0.3)";
 
-
-                /** Get logic coordinates = Unit ( PositionX ; PositionY ) range(20) */
-                let clickX = event.clientX, clickY = event.clientY;
-                let unitPositionX = Math.floor( (clickX - 10) / 36 );
-                let unitPositionY = Math.floor( (clickY - 10) / 36 );
-
                 /** Запоминаем Юнита, по которому кликнули */
                 let currentUnit: Unit;
-                currentUnit = getUnit(unitPositionX, unitPositionY);
+                currentUnit = getUnit(logicX, logicY);
                 console.log(currentUnit);
                 self.currentUnit = currentUnit;
 
@@ -249,9 +263,11 @@ export class Map {
                  * Так же отберем клетки тех юнитов, до которых можно дотянуться
                  * range >= r = sqrt( sqr(x1-x2) + sqr(y1-y2) )
                  */
-
                 for (let i = 0; i < self.rows; i++) {
                     for (let j = 0; j < self.cols; j++) {
+                        let elementsMap = document.elementsFromPoint(
+                                j * 36 + 10, i * 36 + 10) as Array<HTMLElement>;
+                        let divsMap = getDivs(elementsMap);
 
                         // Условие для ходьбы
                         if ( speed >= Math.sqrt( Math.pow( (j - currentUnit.position_x), 2) +
@@ -261,12 +277,8 @@ export class Map {
                              * Если 'div' один в координате и Area.canMove
                              * то кладём в клетки, в которые можно ходить
                              */
-                            let elements = document.elementsFromPoint(
-                                j * 36 + 10, i * 36 + 10) as Array<HTMLElement>;
-                            let divs = getDivs(elements);
-
-                            if (divs.length == 1 && self.map[i][j].canMove) {
-                                self.mayMoveCells.push(divs[0]);
+                            if (divsMap.length == 1 && self.map[i][j].canMove) {
+                                self.mayMoveCells.push(divsMap[0]);
                             }
 
                         }
@@ -278,25 +290,16 @@ export class Map {
                              * Если div-а два в координате и 'playerId' у targetUnit и currentUnit отличаются
                              * то кладём в клетки, юнитов из которых можно атаковать
                              */
-                            let elements = document.elementsFromPoint(
-                                j * 36 + 10, i * 36 + 10) as Array<HTMLElement>;
-                            let divs = getDivs(elements);
-                            if (divs.length == 2 && ( getUnit(j, i).playerId != currentUnit.playerId ) &&
+                            if (divsMap.length == 2 && ( getUnit(j, i).playerId != currentUnit.playerId ) &&
                                                         getUnit(j, i).isAlive ) {
-                                self.mayAttackCells.push(divs[1]);
+                                self.mayAttackCells.push(divsMap[1]);
                             }
                         }
                     }
                 }
-
                 /** Подсветим mayMoveCells и mayAttackCells */
-                for (let i = 0; i < self.mayMoveCells.length; i++) {
-                    self.mayMoveCells[i].style.backgroundImage = "url('../src/Strategy/Icons/ground_select.jpg')";
-                }
-                for (let i = 0; i < self.mayAttackCells.length; i++) {
-                    self.mayAttackCells[i].style.backgroundImage = "url('../src/Strategy/Icons/ground_select.jpg')";
-                }
-
+                changeBackground(self.mayMoveCells, "url('../src/Strategy/Icons/ground_select.jpg')");
+                changeBackground(self.mayAttackCells, "url('../src/Strategy/Icons/ground_select.jpg')");
                 /** Обработка первого клика завершена, идём ждать второго клика */
             }
 
@@ -304,13 +307,6 @@ export class Map {
             if ( self.currentUnit != undefined && flag == 0 ) {
 
                 /** Начало обработки второго клика */
-                // alert('Start stage 2!');
-
-
-                    /** Get logic coordinates = Area ( PositionX ; PositionY ) range(20) */
-                    let clickX = event.clientX, clickY = event.clientY;
-                    let areaPositionX = Math.floor( (clickX - 10) / 36 );
-                    let areaPositionY = Math.floor( (clickY - 10) / 36 );
 
                 /**
                  * Либо div второго клика - земля, либо вражеский юнит
@@ -320,19 +316,12 @@ export class Map {
 
                     /** Запоминаем Область, по которой кликнули */
                     let currentArea: Area;
-                    currentArea = getArea(areaPositionX, areaPositionY);
+                    currentArea = getArea(logicX, logicY);
                     console.log(currentArea);
 
                     /** Собственно идём в Area */
-                    //сначала подтереть все старые иконки - вынести в функцию - повторение кода ниже
-                    for (let i = 0; i < self.units.length; i++) {
-                        let divsUnit = getDivs(document.elementsFromPoint(
-                            self.units[i].position_x * 36 + 10,
-                            self.units[i].position_y * 36 + 10) as Array<HTMLElement> )
-                        divsUnit[0].parentNode.removeChild(divsUnit[0]);
-                    }
+                    clearUnit();
                     self.currentUnit.move(self.currentUnit,currentArea);
-                    // upgradeMap();
                     self.draw_map_unit();
                 }
 
@@ -341,35 +330,24 @@ export class Map {
 
                     /** Запоминаем Юнита, по которой кликнули */
                     let targetUnit: Unit;
-                    targetUnit = getUnit(areaPositionX, areaPositionY);
+                    targetUnit = getUnit(logicX, logicY);
                     console.log(targetUnit);
+
                     /** Собственно бьём по TargetUnit */
+                    clearUnit();
                     self.currentUnit.attack(targetUnit);
-                    // upgradeMap();
-                    //сначала подтереть старую иконку
-                    for (let i = 0; i < self.units.length; i++) {
-                        let divsUnit = getDivs(document.elementsFromPoint(
-                            self.units[i].position_x * 36 + 10,
-                            self.units[i].position_y * 36 + 10) as Array<HTMLElement> )
-                        divsUnit[0].parentNode.removeChild(divsUnit[0]);
-                    }
                     self.draw_map_unit();
                 }
 
                 /** Конец обработки второго клика - подтираем всё дело */
                 self.currentUnit = undefined;
 
-                /** Подсветку уберём: поменяем bckgrnd-img и очистим mayMoveCells и mayAttackCells */
-                for (let i = 0; i < self.mayMoveCells.length; i++) {
-                    self.mayMoveCells[i].style.backgroundImage = "url('../src/Strategy/Icons/ground.png')";
-                }
-                for (let i = 0; i < self.mayAttackCells.length; i++) {
-                    self.mayAttackCells[i].style.backgroundImage = "url('../src/Strategy/Icons/ground.png')";
-                }
+                /** Подсветку уберём: поменяем background-image и очистим mayMoveCells и mayAttackCells */
+                changeBackground(self.mayMoveCells, "url('../src/Strategy/Icons/ground.png')");
+                changeBackground(self.mayAttackCells, "url('../src/Strategy/Icons/ground.png')");
                 self.mayMoveCells = [];
                 self.mayAttackCells = [];
             }
-
         };
     }
 }
