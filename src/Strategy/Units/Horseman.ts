@@ -9,7 +9,7 @@ export class Horseman extends Unit {
         super(pos_x, pos_y, playerId);
         this.attackBehavior = new Sabre();
         this.moveBehavior = new MoveHorseman();
-        this.icon = '../src/Strategy/Icons/horseman.png';
+        this.icon = '../src/Strategy/Icons/horseman_alternative.png';
         this.icon_alternative = '../src/Strategy/Icons/horseman_alternative.png';
         this.health = 200;
 

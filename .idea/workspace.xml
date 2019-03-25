@@ -6,9 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="61e6f130-bc6f-4cd1-95dc-f2fb0846f890" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/dist/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Strategy/Map/Map.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Strategy/Map/Map.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Strategy/Behaviors/Attack/Sabre.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Strategy/Behaviors/Attack/Sabre.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Strategy/Behaviors/Attack/StoneBall.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Strategy/Behaviors/Attack/StoneBall.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Strategy/Behaviors/Attack/Sword.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Strategy/Behaviors/Attack/Sword.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Strategy/Icons/catapult.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Strategy/Icons/catapult.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Strategy/Icons/catapult_alternative.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Strategy/Icons/catapult_alternative.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Strategy/Icons/horseman.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Strategy/Icons/horseman_alternative.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Strategy/Icons/swordsman.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Strategy/Icons/swordsman.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Strategy/Icons/swordsman_alternative.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/Strategy/Icons/swordsman_alternative.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Strategy/Map/units.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/Strategy/Map/units.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Strategy/Units/Horseman.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/Strategy/Units/Horseman.ts" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,43 +28,35 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Map.ts" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/Strategy/Map/Map.ts">
+      <file leaf-file-name="Horseman.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Strategy/Units/Horseman.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2798">
-              <caret line="337" column="56" selection-start-line="337" selection-start-column="56" selection-end-line="337" selection-end-column="56" />
-              <folding>
-                <element signature="e#0#28#0" expanded="true" />
-                <element signature="n#!!block;n#constructor#0;n#Map#0" />
-                <element signature="n#!!block;n#print_grid#0;n#Map#0" />
-                <element signature="n#!!block;n#load_map_texture_logic#0;n#Map#0" />
-                <element signature="n#!!block;n#draw_map_texture#0;n#Map#0" />
-                <element signature="n#!!block;n#init_units#0;n#Map#0" />
-                <element signature="n#!!block;n#draw_map_unit#0;n#Map#0" />
-                <element signature="e#6340#6553#0" />
-                <element signature="e#6596#6831#0" />
-                <element signature="e#6888#7202#0" />
-                <element signature="e#7241#7627#0" />
-                <element signature="e#7720#7846#0" />
-              </folding>
+            <state relative-caret-position="44">
+              <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dist/index.html">
+      <file leaf-file-name="archer_alternative.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Strategy/Icons/archer_alternative.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file leaf-file-name="catapult.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Strategy/Icons/catapult.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file leaf-file-name="catapult_alternative.png" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Strategy/Icons/catapult_alternative.png">
+          <provider selected="true" editor-type-id="images" />
+        </entry>
+      </file>
+      <file leaf-file-name="Swordsman.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Strategy/Units/Swordsman.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="220">
-              <caret line="10" column="7" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Unit.ts" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Strategy/Units/Unit.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="484">
-              <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+              <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
             </state>
           </provider>
         </entry>
@@ -64,7 +65,34 @@
         <entry file="file://$PROJECT_DIR$/src/Strategy/Units/Archer.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="110">
-              <caret line="7" column="35" lean-forward="true" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+              <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Bow.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Strategy/Behaviors/Attack/Bow.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Sabre.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Strategy/Behaviors/Attack/Sabre.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Sword.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Strategy/Behaviors/Attack/Sword.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="12" column="71" selection-start-line="12" selection-start-column="71" selection-end-line="12" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -123,7 +151,6 @@
         <option value="$PROJECT_DIR$/src/Strategy/Units/Catapult.ts" />
         <option value="$PROJECT_DIR$/src/Strategy/Units/Archer.ts" />
         <option value="$PROJECT_DIR$/tslint.json" />
-        <option value="$PROJECT_DIR$/src/Strategy/Map/units.json" />
         <option value="$PROJECT_DIR$/src/Remote/test.ts" />
         <option value="$PROJECT_DIR$/src/Remote/remote.control.ts" />
         <option value="$PROJECT_DIR$/src/main.ts" />
@@ -131,9 +158,6 @@
         <option value="$PROJECT_DIR$/tsconfig.json" />
         <option value="$PROJECT_DIR$/src/Strategy/Behaviors/Attack/AttackBehavior.ts" />
         <option value="$PROJECT_DIR$/readme.md" />
-        <option value="$PROJECT_DIR$/src/Strategy/Behaviors/Attack/Sabre.ts" />
-        <option value="$PROJECT_DIR$/src/Strategy/Behaviors/Attack/StoneBall.ts" />
-        <option value="$PROJECT_DIR$/src/Strategy/Behaviors/Attack/Sword.ts" />
         <option value="$PROJECT_DIR$/src/Strategy/Behaviors/Move/MoveBehavior.ts" />
         <option value="$PROJECT_DIR$/src/Strategy/Behaviors/Move/MoveArcher.ts" />
         <option value="$PROJECT_DIR$/src/Strategy/Behaviors/Move/MoveHorseman.ts" />
@@ -143,6 +167,10 @@
         <option value="$PROJECT_DIR$/src/Strategy/Behaviors/Attack/Bow.ts" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/Strategy/Map/Map.ts" />
+        <option value="$PROJECT_DIR$/src/Strategy/Map/units.json" />
+        <option value="$PROJECT_DIR$/src/Strategy/Behaviors/Attack/Sabre.ts" />
+        <option value="$PROJECT_DIR$/src/Strategy/Behaviors/Attack/StoneBall.ts" />
+        <option value="$PROJECT_DIR$/src/Strategy/Behaviors/Attack/Sword.ts" />
       </list>
     </option>
   </component>
@@ -166,7 +194,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -230,6 +257,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -248,14 +276,14 @@
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\PyCharmProjects\DucksTypeScript\src" />
-      <recent name="D:\PyCharmProjects\DucksTypeScript\src\Strategy\Icons" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\PyCharmProjects\DucksTypeScript\src" />
       <recent name="D:\PyCharmProjects\DucksTypeScript\src\Strategy\Icons" />
       <recent name="D:\PyCharmProjects\DucksTypeScript\src\Ducks" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\PyCharmProjects\DucksTypeScript\src\Strategy\Icons" />
+      <recent name="D:\PyCharmProjects\DucksTypeScript\src" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -298,25 +326,25 @@
       <window_info anchor="bottom" id="TODO" order="6" weight="0.3262032" />
       <window_info anchor="bottom" id="Event Log" order="13" side_tool="true" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32941177" />
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32928178" />
       <window_info anchor="bottom" id="Python Console" order="12" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32941177" />
       <window_info active="true" anchor="bottom" id="Terminal" order="11" visible="true" weight="0.33480662" />
       <window_info anchor="bottom" id="TypeScript" order="10" weight="0.3281768" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12153518" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.123667374" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="right" id="Database" order="4" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32928178" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32928178" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -381,69 +409,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/Strategy/Units/Archer.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="7" column="35" lean-forward="true" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="23" lean-forward="true" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dist/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Strategy/Map/Map.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3080">
-          <caret line="140" column="72" selection-start-line="140" selection-start-column="72" selection-end-line="140" selection-end-column="72" />
-          <folding>
-            <element signature="e#0#28#0" expanded="true" />
-            <element signature="n#!!block;n#constructor#0;n#Map#0" />
-            <element signature="n#!!block;n#print_grid#0;n#Map#0" />
-            <element signature="n#!!block;n#load_map_texture_logic#0;n#Map#0" />
-            <element signature="n#!!block;n#draw_map_texture#0;n#Map#0" />
-            <element signature="n#!!block;n#init_units#0;n#Map#0" />
-            <element signature="n#!!block;n#draw_map_unit#0;n#Map#0" />
-            <element signature="e#6340#6553#0" />
-            <element signature="e#6596#6831#0" />
-            <element signature="e#6888#7202#0" />
-            <element signature="e#7241#7627#0" />
-            <element signature="e#7720#7846#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Strategy/Units/Unit.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="7" column="4" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/typescript/lib/lib.dom.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="199">
-          <caret line="4909" column="4" selection-start-line="4909" selection-start-column="4" selection-end-line="4909" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="79882">
-          <caret line="3644" column="4" selection-start-line="3644" selection-start-column="4" selection-end-line="3644" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/test.html" />
     <entry file="file://$PROJECT_DIR$/test/test.js" />
     <entry file="file://$PROJECT_DIR$/src/Ducks/behaviors/fly/FlyNoWay.ts" />
@@ -455,34 +420,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Strategy/Map/Lvl1_texture.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="5" lean-forward="true" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Ducks/MallardDuck.ts" />
     <entry file="file://$PROJECT_DIR$/src/Ducks/behaviors/quack/Quack.ts" />
     <entry file="file://$PROJECT_DIR$/src/Ducks/Duck.ts" />
-    <entry file="file://$PROJECT_DIR$/src/Strategy/Units/Swordsman.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="64" selection-start-line="12" selection-start-column="64" selection-end-line="12" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Strategy/Units/Catapult.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="352">
           <caret line="16" column="1" lean-forward="true" selection-start-line="16" selection-start-column="1" selection-end-line="16" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Strategy/Units/Horseman.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="63" selection-start-line="12" selection-start-column="63" selection-end-line="12" selection-end-column="63" />
         </state>
       </provider>
     </entry>
@@ -504,13 +448,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="4" column="52" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Strategy/Map/units.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="13" column="5" lean-forward="true" selection-start-line="13" selection-start-column="5" selection-end-line="13" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -586,27 +523,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Strategy/Behaviors/Attack/Sabre.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="12" column="71" selection-start-line="12" selection-start-column="71" selection-end-line="12" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Strategy/Behaviors/Attack/StoneBall.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="12" column="71" selection-start-line="12" selection-start-column="71" selection-end-line="12" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Strategy/Behaviors/Attack/Sword.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="12" column="71" selection-start-line="12" selection-start-column="71" selection-end-line="12" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Strategy/Behaviors/Attack/AttackBehavior.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -642,31 +558,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Strategy/Units/Unit.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Strategy/Units/Archer.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="110">
-          <caret line="7" column="35" lean-forward="true" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Strategy/Map/Lvl1_texture.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="13" selection-start-column="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Strategy/Behaviors/Attack/Bow.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
@@ -693,8 +588,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Strategy/Map/Map.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2798">
-          <caret line="337" column="56" selection-start-line="337" selection-start-column="56" selection-end-line="337" selection-end-column="56" />
+        <state relative-caret-position="22">
+          <caret line="226" selection-start-line="226" selection-end-line="226" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
             <element signature="n#!!block;n#constructor#0;n#Map#0" />
@@ -703,14 +598,100 @@
             <element signature="n#!!block;n#draw_map_texture#0;n#Map#0" />
             <element signature="n#!!block;n#init_units#0;n#Map#0" />
             <element signature="n#!!block;n#draw_map_unit#0;n#Map#0" />
-            <element signature="e#6340#6553#0" />
-            <element signature="e#6596#6831#0" />
-            <element signature="e#6888#7202#0" />
-            <element signature="e#7241#7627#0" />
-            <element signature="e#7720#7846#0" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Strategy/Map/Lvl1_texture.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="5" lean-forward="true" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Strategy/Map/units.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="488">
+          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Strategy/Units/Unit.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="24" column="29" selection-start-line="24" selection-start-column="29" selection-end-line="24" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Strategy/Behaviors/Attack/StoneBall.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="7" column="36" lean-forward="true" selection-start-line="7" selection-start-column="36" selection-end-line="7" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Strategy/Behaviors/Attack/Sword.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="12" column="71" selection-start-line="12" selection-start-column="71" selection-end-line="12" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Strategy/Behaviors/Attack/Sabre.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="16" column="9" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Strategy/Behaviors/Attack/Bow.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="16" column="9" lean-forward="true" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Strategy/Units/Archer.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Strategy/Units/Swordsman.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Strategy/Units/Horseman.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Strategy/Icons/horseman.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Strategy/Icons/horseman_alternative.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Strategy/Icons/horseman.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Strategy/Icons/horseman_alternative.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Strategy/Icons/archer_alternative.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Strategy/Icons/catapult.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Strategy/Icons/catapult_alternative.png">
+      <provider selected="true" editor-type-id="images" />
     </entry>
   </component>
 </project>

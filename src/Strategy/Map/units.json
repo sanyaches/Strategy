@@ -7,6 +7,24 @@
       "pos_y": 3
     },
     {
+      "type": "Swordsman",
+      "player_id": "0",
+      "pos_x": 3,
+      "pos_y": 3
+    },
+    {
+      "type": "Horseman",
+      "player_id": "1",
+      "pos_x": 3,
+      "pos_y": 4
+    },
+    {
+      "type": "Catapult",
+      "player_id": "0",
+      "pos_x": 5,
+      "pos_y": 5
+    },
+    {
       "type": "Archer",
       "player_id": "1",
       "pos_x": 5,
